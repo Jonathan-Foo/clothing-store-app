@@ -9,7 +9,7 @@ interface CardProps {
 export const Card: React.FC<CardProps> = ({}) => {
     return (
         <CardWrapper>
-            <ProductImg src={product1} alt="" />
+            <ProductImg src={product1} alt="" draggable='false'/>
             <Name>Women's Denim Jacket</Name>
             <Price>$100</Price>
             <AddToCartBtn>Add</AddToCartBtn>
@@ -25,8 +25,7 @@ const CardWrapper = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 300px;
-    // border: 1px solid ${({theme}) => theme.color.mainBlue};
+    width: 270px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
     border-radius: 10px;
     background-color: #FFF;
@@ -39,7 +38,7 @@ const ProductImg = styled.img`
 `
 const Name = styled.p`
     font-weight: bold;
-    font-size: .9em;
+    font-size: .8em;
     margin-bottom: .2em;
 `
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import groupPhoto from '../assets/groupPhoto.png';
-
+import { Link }  from 'react-router-dom';
 
 
 interface HomeProps {
@@ -11,8 +11,9 @@ interface HomeProps {
 export const Home: React.FC<HomeProps> = ({}) => {
     return (
         <HomeWrapper>
-            <ShopNowBtn>Shop Now!</ShopNowBtn>
-            <Image src={groupPhoto} alt="home-page photo" />
+            <StyledLink to='shop'><p>Shop Now!</p></StyledLink>
+            {/* <ShopNowBtn>Shop Now!</ShopNowBtn> */}
+            <Image src={groupPhoto} alt="home-page photo" draggable='false'/>
             <TextWrapper>
                 <Subtext>POSITIVE LIFESTYLE BRAND</Subtext>
                 <Text>Sustainable Stylish & Simple</Text>
@@ -22,6 +23,33 @@ export const Home: React.FC<HomeProps> = ({}) => {
 }
 
 export default Home;
+
+const StyledLink  = styled(Link)`
+    position: absolute;
+    color: #FFF;
+    font-size: 1.4em;
+    background-color: ${({theme}) => theme.color.black};
+    padding-inline: 1em;
+    padding-block: .5em;
+    border-radius: 100px;
+    right: 43%;
+    bottom: 15%;
+    
+    transform: scale(1);
+    transition: 150ms ease-in-out;
+    
+    &:hover {
+        transform: scale(1.1);
+        background-color: ${({theme}) => theme.color.mainYellow};
+        
+    }
+    
+    @media (max-width: 750px){
+        font-size: 1em;
+        right: 30%;
+        bottom: 25%;
+    }
+`
 
 const HomeWrapper = styled.div`
     position: relative;
@@ -52,34 +80,6 @@ const Image = styled.img`
         opacity: 0.4;
         z-index: -1;
     } 
-
-`
-
-const ShopNowBtn = styled.p`
-    position: absolute;
-    color: #FFF;
-    font-size: 1.4em;
-    background-color: ${({theme}) => theme.color.black};
-    padding-inline: 1em;
-    padding-block: .5em;
-    border-radius: 100px;
-    right: 43%;
-    bottom: 15%;
-    
-    transform: scale(1);
-    transition: 150ms ease-in-out;
-    
-    &:hover {
-        transform: scale(1.1);
-        background-color: ${({theme}) => theme.color.mainYellow};
-        
-    }
-    
-    @media (max-width: 750px){
-        font-size: 1em;
-        right: 30%;
-        bottom: 25%;
-    }
 
 `
 const TextWrapper = styled.div`
