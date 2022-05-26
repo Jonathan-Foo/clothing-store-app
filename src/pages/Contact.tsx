@@ -31,7 +31,7 @@ export const Contact: React.FC<ContactProps> = ({}) => {
                 </GitLink>
             </IconWrapper>
             <Number><AiOutlinePhone/><p>212-456-7899</p></Number>
-            <Address><HiLocationMarker/><p>471 Broome St, New York, NY 10013, United States</p></Address>
+            <Address><HiLocationMarker/><p>471 Broome St, New York, NY 10013</p></Address>
         </ContactWrapper>
     );
 }
@@ -45,6 +45,10 @@ const ContactWrapper = styled.div`
     align-items: center;
     justify-content: center;
     padding-bottom: 16.5em;
+
+    @media (max-width: 750px){
+        padding-bottom: 12em;
+    }
 `
 
 const IconWrapper = styled.div`
@@ -55,6 +59,15 @@ const IconWrapper = styled.div`
     font-size: 125px;
     gap: .8em;
     margin-bottom: 1em;
+    
+    @media (max-width: 1050px){
+        font-size: 70px;
+    }
+
+    
+    @media (max-width: 750px){
+        font-size: 50px;
+    }
 
 `
 
@@ -80,11 +93,17 @@ const Address = styled.div`
     color: ${({theme}) => theme.color.black};
     transform: scale(1);
     transition: 150ms ease-in-out;
+    text-align: center;
 
     &:hover{
         transform: scale(1.05);
         color: ${({theme}) => theme.color.mainYellow};
     }
+    
+    @media (max-width: 750px){
+        font-size: .8em;
+    }
+   
 `
 
 const Number = styled.div`
@@ -101,5 +120,9 @@ const Number = styled.div`
     &:hover{
         transform: scale(1.05);
         color: ${({theme}) => theme.color.mainYellow};
+    }
+
+    @media (max-width: 750px){
+        font-size: .8em;
     }
 `

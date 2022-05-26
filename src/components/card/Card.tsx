@@ -57,6 +57,7 @@ const AddToCartBtn = styled.button`
     width: 100%;
     transition: 150ms ease-in-out;
     margin-top: .5em;
+    cursor: pointer;
 
     &:hover {
         background-color: ${({theme}) => theme.color.mainBlue};

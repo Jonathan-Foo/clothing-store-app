@@ -6,11 +6,13 @@ import Contact from './pages/Contact';
 import Footer from './components/Footer';
 import { Routes, Route } from 'react-router-dom';
 import styled from 'styled-components'
+import Cart from './components/cart/Cart';
 
 
 const App: React.FC = () => {
   return (
     <AppWrapper>
+      <Cart/>
       <Header />
       <Routes>
         <Route path='/' element={<Home />}/>
