@@ -19,7 +19,7 @@ export const Nav: React.FC<NavProps> = ({}) => {
                 <CartIcon>
                     <IoCart size={55}/>
                     <ItemQuantity>
-                        <p>34</p>
+                        <p></p>
                     </ItemQuantity>
                 </CartIcon>
             </NavLinksWrapper>
