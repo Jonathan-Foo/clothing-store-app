@@ -10,9 +10,11 @@ import Cart from './components/cart/Cart';
 
 
 const App: React.FC = () => {
+
+  
   return (
     <AppWrapper>
-      <Cart/>
+      <Cart open={null}/>
       <Header />
       <Routes>
         <Route path='/' element={<Home />}/>

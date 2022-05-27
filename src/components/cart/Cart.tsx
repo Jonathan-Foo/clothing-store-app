@@ -1,20 +1,24 @@
 import React from 'react'
 import CartItem from './CartItems'
 import { IoClose } from 'react-icons/io5'
-import styled from 'styled-components'
+import styled, {css} from 'styled-components'
+
 
 
 interface CartProps {
-
+        open: boolean | null;
 }
 
-export const Cart: React.FC<CartProps> = ({}) => {
+export const Cart: React.FC<CartProps> = ({ open }) => {
+
     return (
         <CartWrapper>
-            <Overlay></Overlay>
-            <CartPanel>
-                <IoClose style={{alignSelf: 'flex-end'}}/>
-                <p>Cart</p>
+            <Overlay open={open}></Overlay>
+            <CartPanel open={open}>
+                <IconWrapper><IoClose/></IconWrapper>
+                <CartTitle>Cart</CartTitle>
+                <CartItem/>
+                <CartItem/>
                 <CartItem/>
                 <p>Total: $100</p>
                 <CheckoutBtn>CHECKOUT</CheckoutBtn>
@@ -25,35 +29,71 @@ export const Cart: React.FC<CartProps> = ({}) => {
 
 export default Cart;
 
+const CartTitle = styled.p`
+    
+`
+
+
+const IconWrapper = styled.div`
+    align-self: flex-end;
+    margin-bottom: -.5em;
+    margin-top: -.5em;
+    &:hover{
+        color: ${({theme}) => theme.color.mainBlue};
+    }
+
+`
 
 const CartWrapper = styled.div`
 
 `
-const CartPanel = styled.div`
+const CartPanel = styled.div<CartProps>`
     position: fixed;
     top: 0;
-    right: 0;
+    right: -1000px;
     padding: 1em;
     background-color: hsl(0, 0%, 100%);
-    height: 100%;
+    bottom: 0;
     z-index: 1;
     display: flex;
     flex-direction: column;
     gap: .5em;
-    width: 30%;
+    width: 600px;
     overflow: auto;
+    transition: right 0.85s ease-in-out;
 
     &::-webkit-scrollbar {
         display: none;
     }
+
+
+    ${({ open }) =>
+    open &&
+    css`
+      right: 0;
+    `}
+
+
+    @media (max-width: 750px) {
+        width: 430px;
+    }
+
 `
 
-const Overlay = styled.div`
+const Overlay = styled.div<CartProps>`
     position: fixed;
+    left: -2000px;
     background-color rgba(0, 0, 0, 0.8);
     height: 100%;
     width: 100%;
     z-index: 1;
+    transition: left 0.85s ease-in-out;
+
+    ${({ open }) =>
+    open &&
+    css`
+      left: 0;
+    `}
 `
 
 const CheckoutBtn = styled.button`

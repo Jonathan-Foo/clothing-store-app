@@ -14,9 +14,9 @@ export const CartItems: React.FC<CartItemsProps> = ({}) => {
                 <Name>Men's Denim Jacket</Name>
                 <Amount>$100</Amount>
                 <Quantity>
-                    <Button>+</Button>
-                    <Value>1</Value>
                     <Button>-</Button>
+                    <Value>1</Value>
+                    <Button>+</Button>
                 </Quantity>
             </Info>
             
@@ -28,7 +28,16 @@ export default CartItems;
 
 const ItemWrapper = styled.div`
     display: flex;
-    
+    justify-content: flex-start;
+    padding-inline: .5em;
+    border-radius: 10px;
+    gap: .2em;
+
+    border: 1px solid #999;
+
+    &:hover {
+        border: 1px solid ${({theme}) => theme.color.mainBlue};
+    }
 
 `
 
@@ -40,7 +49,8 @@ const Image = styled.img`
 const Info = styled.div`
     display: flex;
     flex-direction: column;
-    gap: .2em;
+    margin-top: .9em;
+    font-size: .9em;
 
 `
 
@@ -53,6 +63,8 @@ const Amount = styled.p`
 const Quantity = styled.div`
     display: flex;
     gap: .5em;
+    margin-top: .3em;
+    
 `
 const Value = styled.p`
 `
@@ -60,7 +72,7 @@ const Value = styled.p`
 const Button = styled.button`
     apperance: none;
     border: none;
-    font-size: 1em;
+    font-size: inherit;
     width: 1.3em;
     font-family: inherit;
     font-weigth: bold;

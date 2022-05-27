@@ -60,6 +60,7 @@ const TextLogo = styled.p`
         color: ${({theme}) => theme.color.mainYellow};
     }
 
+
     @media (max-width: 1150px){
         font-size: 1.5em;
         margin-left: -.6em;
