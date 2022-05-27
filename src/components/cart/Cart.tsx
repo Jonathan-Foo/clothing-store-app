@@ -2,25 +2,37 @@ import React from 'react'
 import CartItem from './CartItems'
 import { IoClose } from 'react-icons/io5'
 import styled, {css} from 'styled-components'
-
+import { Product, Cart as CartTyp } from '../../hook/product'
 
 
 interface CartProps {
-        open: boolean | null;
+    open: boolean;
+    closeCart: () => void;
+    total: number;
+    cart: CartTyp;
+    handleIncrement: (id: string) => void;
+    handleDecrement: (id: string) => void;
+
 }
 
-export const Cart: React.FC<CartProps> = ({ open }) => {
+interface StyleProps {
+    open: boolean;
+}
+
+export const Cart: React.FC<CartProps> = ({ open, closeCart, total, cart, handleIncrement, handleDecrement }) => {
+    
+    const inCartItems = cart.map(item => {
+        return <CartItem key={item.id} payload={item} handleIncrement={handleIncrement} handleDecrement={handleDecrement} />
+    })
 
     return (
         <CartWrapper>
-            <Overlay open={open}></Overlay>
+            <Overlay open={open} onClick={closeCart}></Overlay>
             <CartPanel open={open}>
-                <IconWrapper><IoClose/></IconWrapper>
+                <IconWrapper onClick={closeCart}><IoClose/></IconWrapper>
                 <CartTitle>Cart</CartTitle>
-                <CartItem/>
-                <CartItem/>
-                <CartItem/>
-                <p>Total: $100</p>
+                {inCartItems}
+                <p>Total: ${total}</p>
                 <CheckoutBtn>CHECKOUT</CheckoutBtn>
             </CartPanel>
         </CartWrapper>
@@ -47,7 +59,7 @@ const IconWrapper = styled.div`
 const CartWrapper = styled.div`
 
 `
-const CartPanel = styled.div<CartProps>`
+const CartPanel = styled.div<StyleProps>`
     position: fixed;
     top: 0;
     right: -1000px;
@@ -80,7 +92,7 @@ const CartPanel = styled.div<CartProps>`
 
 `
 
-const Overlay = styled.div<CartProps>`
+const Overlay = styled.div<StyleProps>`
     position: fixed;
     left: -2000px;
     background-color rgba(0, 0, 0, 0.8);

@@ -1,18 +1,25 @@
 import React from 'react'
 import styled from 'styled-components'
-import product1 from '../../assets/product1.png';
+import { Product, Cart, products} from '../../hook/product'
 
 interface CardProps {
-
+    payload: Product;
+    handleAddToCart: (id: string) => void;
 }
 
-export const Card: React.FC<CardProps> = ({}) => {
+export const Card: React.FC<CardProps> = ({ payload, handleAddToCart }) => {
+    const { name, id, src, cost} = payload;
+
+    const addToCart = () => {
+        handleAddToCart(id);
+    }
+
     return (
         <CardWrapper>
-            <ProductImg src={product1} alt="" draggable='false'/>
-            <Name>Women's Denim Jacket</Name>
-            <Price>$100</Price>
-            <AddToCartBtn>Add</AddToCartBtn>
+            <ProductImg src={src} alt={name} draggable='false'/>
+            <Name>{name}</Name>
+            <Price>${cost}</Price>
+            <AddToCartBtn onClick={addToCart}>Add</AddToCartBtn>
         </CardWrapper>
     );
 }

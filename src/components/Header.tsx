@@ -5,10 +5,11 @@ import { Link }  from 'react-router-dom'
 
 
 interface NavProps {
-
+    openCart: () => void;
+    quantity: number | undefined | null;
 }
 
-export const Nav: React.FC<NavProps> = ({}) => {
+export const Nav: React.FC<NavProps> = ({ openCart, quantity }) => {
     return (
         <NavbarWrapper>
             <TextLogo>ClothingStore</TextLogo>
@@ -16,10 +17,10 @@ export const Nav: React.FC<NavProps> = ({}) => {
                 <Link to='/'><li>Home</li></Link>
                 <Link to='shop'><li>Shop</li></Link>
                 <Link to='contact'><li>Contact</li></Link>
-                <CartIcon>
+                <CartIcon onClick={openCart}>
                     <IoCart size={55}/>
                     <ItemQuantity>
-                        <p></p>
+                        <p>{quantity !== 0 && quantity}</p>
                     </ItemQuantity>
                 </CartIcon>
             </NavLinksWrapper>

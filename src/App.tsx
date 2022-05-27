@@ -7,18 +7,25 @@ import Footer from './components/Footer';
 import { Routes, Route } from 'react-router-dom';
 import styled from 'styled-components'
 import Cart from './components/cart/Cart';
+import useCart from './hook/useCart';
+import { useEffect } from 'react';
+
 
 
 const App: React.FC = () => {
+  const [ cart, total, open, handleAddToCart, cartTotal, handleIncrement, handleDecrement, openCart, closeCart, quantity, cartQuantity ] = useCart();
 
+  useEffect(() => { cartTotal(); }, [cart])
   
+  useEffect(() => { cartQuantity(); }, [cart])
+
   return (
     <AppWrapper>
-      <Cart open={null}/>
-      <Header />
+      <Cart open={open} closeCart={closeCart} total={total} cart={cart} handleIncrement={handleIncrement} handleDecrement={handleDecrement}/>
+      <Header openCart={openCart} quantity={quantity}/>
       <Routes>
         <Route path='/' element={<Home />}/>
-        <Route path='/shop' element={<Shop />}/>
+        <Route path='/shop' element={<Shop handleAddToCart={handleAddToCart}/>}/>
         <Route path='/contact' element={<Contact />}/>
       </Routes>
       <Footer/>

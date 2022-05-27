@@ -1,25 +1,38 @@
 import React from 'react'
 import styled from 'styled-components'
-import product1 from '../../assets/product1.png';
+import { Product} from '../../hook/product'
+
+
 
 interface CartItemsProps {
-
+    payload: Product;
+    handleIncrement: (id: string) => void;
+    handleDecrement: (id: string) => void;
 }
 
-export const CartItems: React.FC<CartItemsProps> = ({}) => {
+export const CartItems: React.FC<CartItemsProps> = ({ payload, handleIncrement, handleDecrement }) => {
+    const { name, id, src, cost, quantity, currentCost} = payload;
+
+    const increment = () => {
+        handleIncrement(id);
+    }
+
+    const decrement = () => {
+        handleDecrement(id);
+    }
+
     return (
         <ItemWrapper>
-            <Image src={product1} alt="" draggable='false' />
+            <Image src={src} alt={name} draggable='false' />
             <Info>
-                <Name>Men's Denim Jacket</Name>
-                <Amount>$100</Amount>
+                <Name>{name}</Name>
+                <Amount>${currentCost}</Amount>
                 <Quantity>
-                    <Button>-</Button>
-                    <Value>1</Value>
-                    <Button>+</Button>
+                    <Button onClick={decrement}>-</Button>
+                    <Value>{quantity}</Value>
+                    <Button onClick={increment}>+</Button>
                 </Quantity>
             </Info>
-            
         </ItemWrapper>
     );
 }

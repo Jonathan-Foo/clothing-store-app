@@ -1,5 +1,3 @@
-
-
 export const Theme = {
     color: {
         mainBlue: '#2563eb',
