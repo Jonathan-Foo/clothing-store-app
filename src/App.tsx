@@ -24,9 +24,9 @@ const App: React.FC = () => {
       <Cart open={open} closeCart={closeCart} total={total} cart={cart} handleIncrement={handleIncrement} handleDecrement={handleDecrement}/>
       <Header openCart={openCart} quantity={quantity}/>
       <Routes>
-        <Route path='/' element={<Home />}/>
-        <Route path='/shop' element={<Shop handleAddToCart={handleAddToCart}/>}/>
-        <Route path='/contact' element={<Contact />}/>
+        <Route path='clothing-store-app/' element={<Home />}/>
+        <Route path='clothing-store-app/shop' element={<Shop handleAddToCart={handleAddToCart}/>}/>
+        <Route path='clothing-store-app/contact' element={<Contact />}/>
       </Routes>
       <Footer/>
     </AppWrapper>

@@ -14,9 +14,9 @@ export const Nav: React.FC<NavProps> = ({ openCart, quantity }) => {
         <NavbarWrapper>
             <TextLogo>ClothingStore</TextLogo>
             <NavLinksWrapper>
-                <Link to='/'><li>Home</li></Link>
-                <Link to='shop'><li>Shop</li></Link>
-                <Link to='contact'><li>Contact</li></Link>
+                <Link to='clothing-store-app/'><li>Home</li></Link>
+                <Link to='clothing-store-app/shop'><li>Shop</li></Link>
+                <Link to='clothing-store-app/contact'><li>Contact</li></Link>
                 <CartIcon onClick={openCart}>
                     <IoCart size={55}/>
                     <ItemQuantity>
