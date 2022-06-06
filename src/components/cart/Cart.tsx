@@ -94,7 +94,7 @@ const CartPanel = styled.div<StyleProps>`
 
 const Overlay = styled.div<StyleProps>`
     position: fixed;
-    left: -2000px;
+    left: -100%;
     background-color rgba(0, 0, 0, 0.8);
     height: 100%;
     width: 100%;
