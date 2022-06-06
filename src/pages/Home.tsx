@@ -51,7 +51,7 @@ const StyledLink  = styled(Link)`
     }
 `
 
-const HomeWrapper = styled.div`
+const HomeWrapper = styled.main`
     position: relative;
     font-weight: bold;
     display: flex;

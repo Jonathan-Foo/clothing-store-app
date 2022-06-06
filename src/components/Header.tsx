@@ -29,7 +29,7 @@ export const Nav: React.FC<NavProps> = ({ openCart, quantity }) => {
 };
 
 
-const NavbarWrapper = styled.div`
+const NavbarWrapper = styled.nav`
     display: flex;
     padding: 1em;
     justify-content: space-around;

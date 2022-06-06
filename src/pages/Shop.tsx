@@ -26,7 +26,7 @@ export const Shop: React.FC<ShopProps> = ({ handleAddToCart }) => {
 
 export default Shop;
 
-const ShopWrapper = styled.div`
+const ShopWrapper = styled.main`
     padding: 1em;
     display: flex;
     justify-content: center;

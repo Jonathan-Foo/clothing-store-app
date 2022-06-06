@@ -38,7 +38,7 @@ export const Contact: React.FC<ContactProps> = ({}) => {
 
 export default Contact;
 
-const ContactWrapper = styled.div`
+const ContactWrapper = styled.main`
     padding-top: 5em;
     display: flex;
     flex-direction: column;
